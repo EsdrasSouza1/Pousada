@@ -1,0 +1,36 @@
+{
+    "quartos": [
+        {
+            "id": 1,
+            "nome": "Quarto 1 (At\u00e9 8 pessoas)",
+            "capacidade": 8
+        },
+        {
+            "id": 2,
+            "nome": "Quarto 2 (At\u00e9 8 pessoas)",
+            "capacidade": 8
+        },
+        {
+            "id": 3,
+            "nome": "Quarto 3 (At\u00e9 8 pessoas)",
+            "capacidade": 8
+        },
+        {
+            "id": 4,
+            "nome": "Quarto 4 (At\u00e9 8 pessoas)",
+            "capacidade": 8
+        },
+        {
+            "id": 5,
+            "nome": "Quarto 5 (At\u00e9 8 pessoas)",
+            "capacidade": 8
+        },
+        {
+            "id": 6,
+            "nome": "Quarto Master (At\u00e9 10 pessoas)",
+            "capacidade": 10
+        }
+    ],
+    "reservas": [],
+    "next_reserva_id": 1
+}
