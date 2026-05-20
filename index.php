@@ -19,7 +19,7 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="index.php" class="nav-logo">
-                <img src="img/Logo P.png" alt="Logo Pousada Barão">
+                <img src="img/logo fundo removido.png" alt="Logo Pousada Barão">
             </a>
             <div class="nav-links">
                 <a href="index.php" style="color:var(--green)">Início</a>
@@ -337,7 +337,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="nav-logo" style="color:#fff">
-                        <img src="img/Logo P.png" alt="Logo Pousada Barão">
+                        <img src="img/logo fundo removido.png" alt="Logo Pousada Barão">
                     </div>
                     <p>O melhor padrão de descanso do interior paulista. Hospedagem de alta qualidade e conforto.</p>
                 </div>

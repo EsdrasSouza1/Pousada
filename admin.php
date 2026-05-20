@@ -53,7 +53,7 @@ if (!isset($_SESSION['admin_logado'])) {
         <div class="bg-white/70 backdrop-blur-xl p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white">
             <div class="text-center mb-10">
                 <div class="mx-auto mb-5 flex justify-center">
-                    <img src="img/Logo P.png" alt="Logo Pousada Barão" class="h-20 w-auto">
+                    <img src="img/logo fundo removido.png" alt="Logo Pousada Barão" class="h-20 w-auto">
                 </div>
                 <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">Gestão Barão</h1>
                 <p class="text-slate-500 mt-2 font-medium">Acesse seu painel administrativo</p>
@@ -154,7 +154,7 @@ foreach ($todas_reservas as $r) {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-3">
-                    <img src="img/Logo P.png" alt="Logo Pousada Barão" class="h-10 w-auto">
+                    <img src="img/logo fundo removido.png" alt="Logo Pousada Barão" class="h-10 w-auto">
                     <div>
                         <h1 class="font-extrabold text-xl leading-tight text-slate-900">Pousada Barão</h1>
                         <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Painel de Gestão</p>
