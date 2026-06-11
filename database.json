@@ -1,36 +1,59 @@
 {
+    "_version": 4,
     "quartos": [
         {
             "id": 1,
-            "nome": "Quarto 1 (At\u00e9 8 pessoas)",
-            "capacidade": 8
+            "nome": "Quarto Coletivo",
+            "tipo": "coletivo",
+            "descricao": "Quarto amplo com 6 camas de solteiro. Ideal para grupos, equipes corporativas ou turmas que precisam de espaço com economia.",
+            "descricao_longa": "O Quarto Coletivo é a escolha certa para grupos que precisam de espaço sem abrir mão do conforto. Com 6 camas de solteiro em ambiente organizado e arejado, é excelente para equipes de trabalho, turmas ou grupos de amigos. Ventilador e frigobar completam a estadia.",
+            "preco": 400,
+            "capacidade": 6,
+            "imagem": "img\/quartocom6.webp",
+            "avaliacao": 4.8,
+            "total_avaliacoes": 8,
+            "amenidades": [
+                "6 Camas de Solteiro",
+                "Ventilador",
+                "Frigobar",
+                "Wi-Fi rápido e gratuito",
+                "Banheiro Privativo",
+                "Espelho"
+            ],
+            "badge": "Ideal para Grupos"
         },
         {
             "id": 2,
-            "nome": "Quarto 2 (At\u00e9 8 pessoas)",
-            "capacidade": 8
-        },
-        {
-            "id": 3,
-            "nome": "Quarto 3 (At\u00e9 8 pessoas)",
-            "capacidade": 8
-        },
-        {
-            "id": 4,
-            "nome": "Quarto 4 (At\u00e9 8 pessoas)",
-            "capacidade": 8
-        },
-        {
-            "id": 5,
-            "nome": "Quarto 5 (At\u00e9 8 pessoas)",
-            "capacidade": 8
-        },
-        {
-            "id": 6,
-            "nome": "Quarto Master (At\u00e9 10 pessoas)",
-            "capacidade": 10
+            "nome": "Quarto Duplo",
+            "tipo": "duplo",
+            "descricao": "Quarto com 2 camas de solteiro e ventilador. Ótima opção para dois amigos ou colegas que viajam juntos.",
+            "descricao_longa": "O Quarto Duplo oferece praticidade e ótima relação custo-benefício para duplas. Com 2 camas de solteiro confortáveis e ventilador, é perfeito para quem busca o essencial com qualidade. Ambiente limpo, silencioso e com acesso ao quintal arborizado da pousada.",
+            "preco": 150,
+            "capacidade": 2,
+            "imagem": "img\/quartocom2.webp",
+            "avaliacao": 4.7,
+            "total_avaliacoes": 6,
+            "amenidades": [
+                "2 Camas de Solteiro",
+                "Ventilador",
+                "Wi-Fi rápido e gratuito",
+                "Banheiro Privativo"
+            ],
+            "badge": ""
         }
     ],
-    "reservas": [],
-    "next_reserva_id": 1
+    "reservas": [
+        {
+            "id": 1,
+            "nome_cliente": "Jonas",
+            "telefone": "19999151678",
+            "quarto_id": 1,
+            "data_entrada": "2026-06-10",
+            "data_saida": "2026-06-11",
+            "quantidade_pessoas": 1,
+            "status": "confirmada",
+            "data_criacao": "2026-06-09 22:34:17"
+        }
+    ],
+    "next_reserva_id": 2
 }

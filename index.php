@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hospedagem confortável, limpa e segura no centro de Araras. A Pousada Barão oferece o melhor custo-benefício com atendimento 24h e Wi-Fi grátis.">
+    <meta name="description" content="Hospedagem confortável, limpa e segura no centro de Araras. A Pousada Barão oferece o melhor custo-benefício, câmeras de segurança e Wi-Fi grátis.">
     <title>Pousada Barão - Hospedagem Segura e Confortável em Araras</title>
     <link rel="stylesheet" href="style.css">
     <!-- Adicionando ícones para os diferenciais -->
@@ -26,11 +26,20 @@
                 <a href="infraestrutura.php">Infraestrutura</a>
                 <a href="quartos.php">Acomodações</a>
                 <a href="contato.php">Contato</a>
-                <a href="reserva.php" class="btn-nav">Reservar Agora</a>
+                <a href="#pj">PJ / Empresas</a>
+                <a href="reserva.php" class="btn-nav" style="color:#fff;">Reservar Agora</a>
             </div>
-            <button class="nav-mobile-btn">
+            <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Abrir menu">
                 <span></span><span></span><span></span>
             </button>
+        </div>
+        <div class="nav-mobile" id="mobileMenu">
+            <a href="index.php">Início</a>
+            <a href="infraestrutura.php">Infraestrutura</a>
+            <a href="quartos.php">Acomodações</a>
+            <a href="#pj">PJ / Empresas</a>
+            <a href="contato.php">Contato</a>
+            <a href="reserva.php">Reservar Agora</a>
         </div>
     </nav>
 
@@ -42,25 +51,25 @@
             <!-- Headline Clara e Direta -->
             <h1>Hospedagem <span>segura e aconchegante</span> no centro de Araras.</h1>
             <!-- Subtítulo Objetivo -->
-            <p>Perfeito para trabalho ou descanso. Desfrute de quartos impecáveis, Wi-Fi rápido, segurança 24h e o melhor custo-benefício da cidade.</p>
+            <p>Perfeito para trabalho ou descanso. Desfrute de quartos impecáveis, Wi-Fi rápido, câmeras de segurança e o melhor custo-benefício da cidade.</p>
             
-            <form action="quartos.php" class="search-bar">
+            <form action="reserva.php" method="GET" class="search-bar">
                 <div class="search-field">
                     <label>Check-in</label>
-                    <input type="date" required>
+                    <input type="date" name="data_entrada" id="heroCheckin">
                 </div>
                 <div class="search-divider"></div>
                 <div class="search-field">
                     <label>Check-out</label>
-                    <input type="date" required>
+                    <input type="date" name="data_saida" id="heroCheckout">
                 </div>
                 <div class="search-divider"></div>
                 <div class="search-field">
                     <label>Hóspedes</label>
-                    <select>
-                        <option>1 Pessoa</option>
-                        <option selected>2 Pessoas</option>
-                        <option>3+ Pessoas</option>
+                    <select name="quantidade_pessoas">
+                        <option value="1">1 Pessoa</option>
+                        <option value="2" selected>2 Pessoas</option>
+                        <option value="3">3+ Pessoas</option>
                     </select>
                 </div>
                 <button type="submit" class="search-btn">
@@ -71,7 +80,7 @@
             <!-- Indicadores de Confiança (Social Proof Rápido) -->
             <div style="margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 600;">
                 <span><i class="fa-solid fa-check-circle" style="color:var(--orange)"></i> Limpeza 100%</span>
-                <span><i class="fa-solid fa-check-circle" style="color:var(--orange)"></i> Recepção 24/7</span>
+                <span><i class="fa-solid fa-check-circle" style="color:var(--orange)"></i> Câmeras de Segurança</span>
                 <span><i class="fa-solid fa-star" style="color:#FFD700"></i> 4.9 no Google</span>
             </div>
         </div>
@@ -85,8 +94,8 @@
                 <div class="label">Hóspedes Atendidos</div>
             </div>
             <div class="stat-item">
-                <div class="num">24h</div>
-                <div class="label">Segurança e Portaria</div>
+                <div class="num"><i class="fa-solid fa-shield-halved" style="font-size:1.4rem;"></i></div>
+                <div class="label">Câmeras de Segurança</div>
             </div>
             <div class="stat-item">
                 <div class="num">100%</div>
@@ -112,7 +121,7 @@
                         <i class="fa-solid fa-shield-halved" style="color: var(--green); font-size: 1.5rem;"></i>
                         <div>
                             <h4 style="color: var(--green); margin-bottom: 4px;">Monitoramento 24h</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Câmeras de segurança e equipe presente dia e noite.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Câmeras de segurança para sua tranquilidade durante toda a estadia.</p>
                         </div>
                     </div>
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
@@ -139,7 +148,7 @@
                 </div>
             </div>
             <div class="about-img-wrap">
-                <img src="img/quintal.png" alt="Quintal da Pousada Seguro">
+                <img src="img/infraestruturaesegurança.webp" alt="Infraestrutura e Segurança da Pousada">
                 <div class="about-float" style="padding: 24px;">
                     <div class="big" style="font-size: 2rem;">Zero</div>
                     <div class="small">Taxas Ocultas</div>
@@ -154,90 +163,103 @@
             <div class="section-header">
                 <span class="section-tag">Nossos Planos de Hospedagem</span>
                 <h2 class="section-title">Escolha o nível de conforto ideal</h2>
-                <p class="section-sub">Diferentes opções para diferentes necessidades. Todos os planos incluem Wi-Fi, limpeza e recepção 24h.</p>
+                <p class="section-sub">Diferentes opções para diferentes necessidades. Todos os planos incluem Wi-Fi, limpeza diária e câmeras de segurança.</p>
             </div>
 
             <div class="rooms-grid">
-                <!-- Quarto 1 (O mais vendido / "Hospedagem WordPress") -->
-                <a href="quarto-detalhe.php" class="room-card" style="border: 2px solid var(--green);">
+                <!-- Quarto 1 — Quarto Coletivo -->
+                <a href="quarto-detalhe.php?id=1" class="room-card" style="border: 2px solid var(--green);">
                     <div class="room-card-img">
-                        <img src="img/quarto-duplo.png" alt="Quarto Duplo">
-                        <div class="room-badge" style="background: var(--green); color: #fff;">Mais Popular</div>
+                        <img src="img/quartocom6.webp" alt="Quarto Coletivo">
+                        <div class="room-badge" style="background: var(--orange); color: #fff;">Ideal para Grupos</div>
                     </div>
                     <div class="room-card-body">
                         <div class="room-card-top">
-                            <h3 class="room-name">Suíte Casal Conforto</h3>
+                            <h3 class="room-name">Quarto Coletivo</h3>
                         </div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Para casais ou viagens a dois que precisam de conforto total.</p>
-                        
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Quarto amplo com 6 camas de solteiro para grupos, equipes ou turmas.</p>
                         <div style="margin-bottom: 24px; flex: 1;">
                             <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Espaço:</b> Cama Queen Size</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Climatização:</b> Ar Condicionado</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Entretenimento:</b> TV Smart</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Extras:</b> Frigobar</li>
-                            </ul>
-                        </div>
-
-                        <div class="room-footer" style="flex-direction: column; align-items: flex-start; gap: 16px;">
-                            <div class="room-price">R$ 180<span>/noite</span></div>
-                            <button class="btn-nav" style="width: 100%; text-align: center;">Reservar Casal</button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Quarto 2 ("Servidor Dedicado / Familia") -->
-                <a href="quarto-detalhe.php" class="room-card">
-                    <div class="room-card-img">
-                        <img src="img/quarto-familia.png" alt="Quarto Família">
-                    </div>
-                    <div class="room-card-body">
-                        <div class="room-card-top">
-                            <h3 class="room-name">Quarto Familiar Triplo</h3>
-                        </div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Para quem viaja em grupo e precisa de mais espaço e economia.</p>
-                        
-                        <div style="margin-bottom: 24px; flex: 1;">
-                            <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Espaço:</b> 3 Camas de Solteiro</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Climatização:</b> Ventilador de Teto</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Extras:</b> Frigobar</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Vista:</b> De frente para o quintal</li>
-                            </ul>
-                        </div>
-
-                        <div class="room-footer" style="flex-direction: column; align-items: flex-start; gap: 16px;">
-                            <div class="room-price">R$ 250<span>/noite</span></div>
-                            <button class="btn-nav" style="width: 100%; text-align: center; background: #fff !important; color: var(--orange) !important; border: 1px solid var(--orange);">Reservar Familiar</button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Quarto 3 ("Hospedagem Compartilhada / Solteiro Econômico") -->
-                <a href="quarto-detalhe.php" class="room-card">
-                    <div class="room-card-img">
-                        <img src="img/quarto-single.png" alt="Quarto Solteiro">
-                    </div>
-                    <div class="room-card-body">
-                        <div class="room-card-top">
-                            <h3 class="room-name">Solteiro Econômico</h3>
-                        </div>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">O plano de entrada perfeito para quem viaja a trabalho.</p>
-                        
-                        <div style="margin-bottom: 24px; flex: 1;">
-                            <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Espaço:</b> 1 Cama de Solteiro</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Trabalho:</b> Mesa para Notebook</li>
-                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Conectividade:</b> Wi-Fi Rápido</li>
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Camas:</b> 6 Camas de Solteiro</li>
                                 <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Climatização:</b> Ventilador</li>
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Extras:</b> Frigobar + Espelho</li>
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Até:</b> 6 pessoas</li>
                             </ul>
                         </div>
-
                         <div class="room-footer" style="flex-direction: column; align-items: flex-start; gap: 16px;">
-                            <div class="room-price">R$ 120<span>/noite</span></div>
-                            <button class="btn-nav" style="width: 100%; text-align: center; background: #fff !important; color: var(--orange) !important; border: 1px solid var(--orange);">Reservar Solteiro</button>
+                            <div class="room-price">R$ 400<span>/noite</span></div>
+                            <button class="btn-nav" style="width: 100%; text-align: center;">Reservar Coletivo</button>
                         </div>
                     </div>
+                </a>
+
+                <!-- Quarto 2 — Quarto Duplo -->
+                <a href="quarto-detalhe.php?id=2" class="room-card">
+                    <div class="room-card-img">
+                        <img src="img/quartocom2.webp" alt="Quarto Duplo">
+                    </div>
+                    <div class="room-card-body">
+                        <div class="room-card-top">
+                            <h3 class="room-name">Quarto Duplo</h3>
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">2 camas de solteiro para amigos ou colegas que viajam juntos.</p>
+                        <div style="margin-bottom: 24px; flex: 1;">
+                            <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Camas:</b> 2 Camas de Solteiro</li>
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Climatização:</b> Ventilador</li>
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Conectividade:</b> Wi-Fi Rápido</li>
+                                <li><i class="fa-solid fa-check" style="color: var(--orange); margin-right: 8px;"></i> <b>Até:</b> 2 pessoas</li>
+                            </ul>
+                        </div>
+                        <div class="room-footer" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+                            <div class="room-price">R$ 150<span>/noite</span></div>
+                            <button class="btn-nav" style="width: 100%; text-align: center; background: #fff !important; color: var(--orange) !important; border: 1px solid var(--orange);">Reservar Duplo</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTES CORPORATIVOS (PJ) -->
+    <section class="section bg-gray" id="pj">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Atendimento Corporativo</span>
+                <h2 class="section-title">Hospedagem para Empresas e PJ</h2>
+                <p class="section-sub">Facilitamos a estadia de equipes, representantes e profissionais em viagem corporativa. Condições especiais, nota fiscal e atendimento dedicado.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 40px;">
+                <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:32px 24px; text-align:center;">
+                    <i class="fa-solid fa-file-invoice" style="font-size:2rem; color:var(--green); margin-bottom:16px; display:block;"></i>
+                    <h4 style="font-size:1.05rem; color:var(--green); margin-bottom:8px;">Nota Fiscal</h4>
+                    <p style="font-size:0.88rem; color:var(--text-muted);">Emitimos NF para facilitar reembolso e prestação de contas da sua empresa.</p>
+                </div>
+                <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:32px 24px; text-align:center;">
+                    <i class="fa-solid fa-calendar-check" style="font-size:2rem; color:var(--green); margin-bottom:16px; display:block;"></i>
+                    <h4 style="font-size:1.05rem; color:var(--green); margin-bottom:8px;">Estadias Mensais</h4>
+                    <p style="font-size:0.88rem; color:var(--text-muted);">Tarifas especiais para profissionais que precisam de hospedagem recorrente ou prolongada.</p>
+                </div>
+                <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:32px 24px; text-align:center;">
+                    <i class="fa-solid fa-users" style="font-size:2rem; color:var(--green); margin-bottom:16px; display:block;"></i>
+                    <h4 style="font-size:1.05rem; color:var(--green); margin-bottom:8px;">Múltiplos Quartos</h4>
+                    <p style="font-size:0.88rem; color:var(--text-muted);">Reserve mais de um quarto para sua equipe. Desconto corporativo para grupos.</p>
+                </div>
+                <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:32px 24px; text-align:center;">
+                    <i class="fa-solid fa-briefcase" style="font-size:2rem; color:var(--green); margin-bottom:16px; display:block;"></i>
+                    <h4 style="font-size:1.05rem; color:var(--green); margin-bottom:8px;">Ambiente de Trabalho</h4>
+                    <p style="font-size:0.88rem; color:var(--text-muted);">Wi-Fi rápido, mesa de trabalho e silêncio garantido para manter sua produtividade.</p>
+                </div>
+            </div>
+
+            <div style="background:var(--green); border-radius:var(--radius-lg); padding:40px 32px; text-align:center; color:#fff;">
+                <h3 style="font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:12px;">Feche um contrato PJ</h3>
+                <p style="color:rgba(255,255,255,0.85); font-size:1rem; margin-bottom:28px; max-width:500px; margin-left:auto; margin-right:auto;">Fale com nossa equipe e receba condições exclusivas para sua empresa — tarifas, nota fiscal e disponibilidade garantida.</p>
+                <a href="https://wa.me/5519996544617?text=Olá!+Gostaria+de+informações+sobre+hospedagem+corporativa+PJ." target="_blank"
+                   class="btn-nav" style="display:inline-flex; align-items:center; gap:10px; background:#fff !important; color:var(--green) !important; font-weight:700; padding:14px 28px;">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.3rem; color:#25D366;"></i>
+                    Solicitar Proposta Corporativa
                 </a>
             </div>
         </div>
@@ -353,7 +375,7 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Atendimento 24/7</h4>
+                    <h4>Contato</h4>
                     <ul>
                         <li><a href="https://wa.me/5519996544617"><i class="fa-brands fa-whatsapp"></i> (19) 99654-4617</a></li>
                         <li><i class="fa-solid fa-envelope"></i> contato@pousadabarao.com.br</li>
@@ -364,9 +386,9 @@
                 <div class="footer-col">
                     <h4>Políticas</h4>
                     <ul>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Política de Cancelamento</a></li>
+                        <li><a href="termos.php">Termos de Uso</a></li>
+                        <li><a href="privacidade.php">Política de Privacidade</a></li>
+                        <li><a href="cancelamento.php">Política de Cancelamento</a></li>
                     </ul>
                 </div>
             </div>
@@ -382,5 +404,21 @@
     <a href="https://wa.me/5519996544617" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        });
+        const hc = document.getElementById('heroCheckin');
+        const hco = document.getElementById('heroCheckout');
+        if (hc && hco) {
+            const hoje = new Date().toISOString().split('T')[0];
+            hc.min = hoje;
+            hco.min = hoje;
+            hc.addEventListener('change', function() {
+                hco.min = this.value;
+                if (hco.value && hco.value <= this.value) hco.value = '';
+            });
+        }
+    </script>
 </body>
 </html>

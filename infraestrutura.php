@@ -23,11 +23,18 @@
                 <a href="infraestrutura.php" style="color:var(--green)">Infraestrutura</a>
                 <a href="quartos.php">Acomodações</a>
                 <a href="contato.php">Contato</a>
-                <a href="reserva.php" class="btn-nav">Reservar Agora</a>
+                <a href="reserva.php" class="btn-nav" style="color:#fff;">Reservar Agora</a>
             </div>
-            <button class="nav-mobile-btn">
+            <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Abrir menu">
                 <span></span><span></span><span></span>
             </button>
+        </div>
+        <div class="nav-mobile" id="mobileMenu">
+            <a href="index.php">Início</a>
+            <a href="infraestrutura.php">Infraestrutura</a>
+            <a href="quartos.php">Acomodações</a>
+            <a href="contato.php">Contato</a>
+            <a href="reserva.php">Reservar Agora</a>
         </div>
     </nav>
 
@@ -52,7 +59,7 @@
                         <i class="fa-solid fa-shield-halved" style="color: var(--green); font-size: 1.5rem;"></i>
                         <div>
                             <h4 style="color: var(--green); margin-bottom: 4px;">Monitoramento 24h</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">Câmeras de segurança e equipe presente dia e noite.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Câmeras de segurança para sua tranquilidade durante toda a estadia.</p>
                         </div>
                     </div>
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
@@ -79,7 +86,7 @@
                 </div>
             </div>
             <div class="about-img-wrap">
-                <img src="img/quintal.png" alt="Quintal da Pousada Seguro" style="width: 100%; border-radius: var(--radius-lg);">
+                <img src="img/infraestruturaesegurança.webp" alt="Infraestrutura e Segurança da Pousada Barão" style="width: 100%; border-radius: var(--radius-lg);">
                 <div class="about-float" style="padding: 24px;">
                     <div class="big" style="font-size: 2rem;">Zero</div>
                     <div class="small">Taxas Ocultas</div>
@@ -110,7 +117,7 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Atendimento 24/7</h4>
+                    <h4>Contato</h4>
                     <ul>
                         <li><a href="https://wa.me/5519996544617"><i class="fa-brands fa-whatsapp"></i> (19) 99654-4617</a></li>
                         <li><i class="fa-solid fa-envelope"></i> contato@pousadabarao.com.br</li>
@@ -121,9 +128,9 @@
                 <div class="footer-col">
                     <h4>Políticas</h4>
                     <ul>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Política de Cancelamento</a></li>
+                        <li><a href="termos.php">Termos de Uso</a></li>
+                        <li><a href="privacidade.php">Política de Privacidade</a></li>
+                        <li><a href="cancelamento.php">Política de Cancelamento</a></li>
                     </ul>
                 </div>
             </div>
@@ -141,11 +148,8 @@
     </a>
 
     <script>
-        const mobileBtn = document.querySelector('.nav-mobile-btn');
-        const navLinks = document.querySelector('.nav-links');
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileBtn.classList.toggle('active');
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('open');
         });
     </script>
 </body>
