@@ -1,0 +1,6 @@
+# Configurações locais de ferramentas (não versionar)
+.claude/
+
+# Banco local / artefatos
+banco.sqlite
+*.log
