@@ -1,0 +1,9 @@
+.git
+.gitignore
+.claude
+*.md
+database.json
+init_db.php
+banco.sqlite
+apresentacao.html
+Informações Pousada Barão.txt

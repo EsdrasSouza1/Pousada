@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Apresentação — Pousada Barão | Sistema Web de Gestão e Reservas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green:      #2F4F4F;
+            --green-dark: #1f3636;
+            --green-pale: #e3efe9;
+            --orange:     #C96A2A;
+            --orange-pale:#fbeadd;
+            --gray:       #f7f6f3;
+            --text:       #21302e;
+            --muted:      #5f6f6d;
+            --gold:       #ffd166;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #dfe4e2;
+            color: var(--text);
+        }
+
+        /* cada slide = 1 página A4 paisagem */
+        .slide {
+            width: 297mm;
+            height: 210mm;
+            background: #fff;
+            margin: 0 auto 14px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        }
+
+        /* ─── header padrão ─── */
+        .slide-header {
+            background: var(--green);
+            color: #fff;
+            padding: 18px 44px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+        .slide-header .num {
+            background: var(--orange);
+            border-radius: 10px;
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; font-weight: 800;
+            flex-shrink: 0;
+        }
+        .slide-header h2 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+        .slide-header p  { font-size: 0.8rem; opacity: 0.75; margin-top: 2px; }
+        .slide-header .mini-logo {
+            margin-left: auto;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            white-space: nowrap;
+        }
+
+        .slide-body {
+            padding: 28px 44px 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-height: 0;
+        }
+
+        .page-num {
+            position: absolute;
+            bottom: 12px;
+            right: 22px;
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        /* ─── utilitários ─── */
+        .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+        .four-col  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+        .card {
+            background: var(--gray);
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid var(--green);
+        }
+        .card h3 {
+            font-size: 0.92rem; font-weight: 800;
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .card p, .card li { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+        .card ul { padding-left: 17px; display: flex; flex-direction: column; gap: 4px; }
+        .card.orange { border-left-color: var(--orange); }
+        .card.orange h3 { color: var(--orange); }
+
+        .tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--green-pale); color: var(--green);
+            font-size: 0.72rem; font-weight: 800;
+            padding: 4px 14px; border-radius: 20px;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            width: fit-content;
+        }
+        .tag.orange { background: var(--orange-pale); color: var(--orange); }
+
+        .photo {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: var(--gray);
+        }
+        .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .photo .caption {
+            position: absolute; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            color: #fff; padding: 28px 16px 12px;
+            font-size: 0.78rem; font-weight: 700;
+        }
+
+        .kpi {
+            background: var(--green); color: #fff;
+            border-radius: 14px; padding: 18px 14px;
+            text-align: center;
+        }
+        .kpi .v { font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
+        .kpi .l { font-size: 0.72rem; opacity: 0.8; margin-top: 5px; line-height: 1.4; }
+        .kpi.orange { background: var(--orange); }
+
+        table.tbl {
+            width: 100%; border-collapse: collapse;
+            font-size: 0.8rem;
+            border-radius: 12px; overflow: hidden;
+        }
+        .tbl th {
+            background: var(--green); color: #fff;
+            padding: 9px 14px; text-align: left;
+            font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .tbl td { padding: 9px 14px; border-bottom: 1px solid #e8ece9; color: var(--muted); }
+        .tbl tr:nth-child(even) td { background: var(--gray); }
+        .tbl td b { color: var(--text); }
+
+        .flow { display: flex; align-items: stretch; gap: 10px; }
+        .flow-step {
+            flex: 1;
+            background: var(--green-pale); color: var(--green);
+            border-radius: 12px; padding: 14px 12px;
+            font-size: 0.78rem; font-weight: 700;
+            text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+        }
+        .flow-step i { font-size: 1.25rem; }
+        .flow-sep { display: flex; align-items: center; color: var(--orange); font-size: 1rem; }
+
+        .check-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .check-list li {
+            font-size: 0.83rem; color: var(--muted); line-height: 1.5;
+            padding-left: 26px; position: relative;
+        }
+        .check-list li::before {
+            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            color: var(--orange); position: absolute; left: 0; top: 1px; font-size: 0.8rem;
+        }
+
+        pre.code {
+            background: #1e2a28; color: #d7e5e0;
+            border-radius: 12px; padding: 16px 18px;
+            font-size: 0.68rem; line-height: 1.55;
+            font-family: 'Consolas', monospace;
+            overflow: hidden;
+        }
+        pre.code .k { color: #8fd3b6; }
+        pre.code .s { color: #ffd166; }
+
+        /* ─── capa ─── */
+        .slide-capa {
+            justify-content: flex-end;
+            color: #fff;
+        }
+        .slide-capa .bg {
+            position: absolute; inset: 0;
+            background: url('img/foto_inicial.webp') center/cover no-repeat;
+        }
+        .slide-capa .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(31,54,54,0.55) 0%, rgba(31,54,54,0.92) 80%);
+        }
+        .slide-capa .content {
+            position: relative; padding: 0 60px 54px;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .slide-capa .inst {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; opacity: 0.85;
+        }
+        .slide-capa h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.9rem; line-height: 1.12; max-width: 850px;
+        }
+        .slide-capa h1 span { color: var(--gold); }
+        .slide-capa .sub { font-size: 1rem; opacity: 0.85; max-width: 720px; line-height: 1.6; }
+        .slide-capa .meta {
+            display: flex; gap: 26px; margin-top: 10px;
+            font-size: 0.82rem; font-weight: 600; opacity: 0.9;
+            flex-wrap: wrap;
+        }
+        .slide-capa .meta i { color: var(--gold); margin-right: 7px; }
+        .slide-capa .logo-top {
+            position: absolute; top: 36px; left: 60px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .slide-capa .logo-top img { height: 64px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+
+        /* ─── slide final ─── */
+        .slide-final { color: #fff; align-items: center; justify-content: center; text-align: center; gap: 18px; }
+        .slide-final .bg { position: absolute; inset: 0; background: url('img/quintal.png') center/cover no-repeat; }
+        .slide-final .overlay { position: absolute; inset: 0; background: rgba(31,54,54,0.88); }
+        .slide-final .content { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 0 80px; }
+        .slide-final h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; }
+        .slide-final p { opacity: 0.85; font-size: 1rem; max-width: 640px; line-height: 1.7; }
+
+        @media print {
+            body { background: #fff; }
+            .slide { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════ SLIDE 1 — CAPA ════════════════ -->
+<div class="slide slide-capa">
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <div class="logo-top">
+        <img src="img/logo fundo removido.png" alt="Logo Pousada Barão">
+    </div>
+    <div class="content">
+        <div class="inst">Tecnologia em Análise e Desenvolvimento de Sistemas — Projeto Integrador</div>
+        <h1>Pousada Barão: <span>sistema web de gestão e reservas online</span> para hospedagem de pequeno porte</h1>
+        <p class="sub">Do caderno de anotações ao painel digital — digitalização completa do processo de reservas de uma pousada familiar no centro de Araras, SP.</p>
+        <div class="meta">
+            <span><i class="fa-solid fa-user"></i> Esdras de Souza</span>
+            <span><i class="fa-solid fa-location-dot"></i> Araras – SP</span>
+            <span><i class="fa-solid fa-calendar"></i> 2026</span>
+            <span><i class="fa-brands fa-php"></i> PHP · JavaScript · JSON</span>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════ SLIDE 2 — ROTEIRO ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">01</div>
+        <div><h2>Roteiro da Apresentação</h2><p>O que veremos a seguir</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body">
+        <div class="three-col" style="flex:1; align-content: center; gap: 22px;">
+            <div class="card"><h3><i class="fa-solid fa-magnifying-glass"></i> 1 · O Problema</h3><p>Como a pousada operava antes do sistema e quais dores motivaram o projeto.</p></div>
+            <div class="card"><h3><i class="fa-solid fa-hotel"></i> 2 · A Pousada Barão</h3><p>O estabelecimento, as acomodações reais e os diferenciais.</p></div>
+            <div class="card"><h3><i class="fa-solid fa-bullseye"></i> 3 · Objetivos</h3><p>Objetivo geral e específicos definidos no levantamento de requisitos.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-layer-group"></i> 4 · Tecnologias e Arquitetura</h3><p>Stack escolhida, justificativas e arquitetura em três camadas.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-desktop"></i> 5 · O Sistema</h3><p>Portal público, calendário inteligente, painel admin e integração WhatsApp.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-flag-checkered"></i> 6 · Resultados</h3><p>Testes realizados, limitações reconhecidas e trabalhos futuros.</p></div>
+        </div>
+    </div>
+    <div class="page-num">2 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 3 — O PROBLEMA ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">02</div>
+        <div><h2>O Problema</h2><p>Gestão analógica em um mercado digital</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body">
+        <div class="four-col">
+            <div class="kpi"><div class="v">+33 mil</div><div class="l">meios de hospedagem registrados no Brasil (Min. do Turismo)</div></div>
+            <div class="kpi"><div class="v">Maioria</div><div class="l">micro e pequeno porte, com reservas anotadas manualmente</div></div>
+            <div class="kpi orange"><div class="v">0</div><div class="l">canais digitais de reserva na Pousada Barão antes do projeto</div></div>
+            <div class="kpi orange"><div class="v">100%</div><div class="l">das reservas dependiam de WhatsApp e memória da gestora</div></div>
+        </div>
+        <div class="two-col" style="flex:1;">
+            <div class="card">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color:var(--orange)"></i> Dores identificadas na entrevista com a gestora</h3>
+                <ul class="check-list" style="margin-top:6px;">
+                    <li>Conflitos de agenda e risco constante de reserva dupla (overbooking)</li>
+                    <li>Impossibilidade de verificar disponibilidade em tempo real</li>
+                    <li>Perda de hóspedes que preferem agendar por canais digitais</li>
+                    <li>Nenhum histórico centralizado de reservas e hóspedes</li>
+                    <li>Sobrecarga operacional respondendo as mesmas perguntas no WhatsApp</li>
+                </ul>
+            </div>
+            <div class="card orange">
+                <h3><i class="fa-solid fa-lightbulb"></i> Por que não usar um PMS comercial?</h3>
+                <p>Property Management Systems (PMS) comerciais integram reservas, check-in e faturamento — mas os <b>custos de licenciamento e implantação são incompatíveis</b> com a realidade de uma microempresa familiar.</p>
+                <p style="margin-top:10px;"><b style="color:var(--orange)">A solução:</b> um sistema web sob medida, de custo zero de licenciamento, fácil de hospedar e na escala exata do negócio.</p>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">3 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 4 — A POUSADA ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">03</div>
+        <div><h2>A Pousada Barão</h2><p>Estudo de caso real — Rua Nunes Machado, centro de Araras, SP</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body" style="flex-direction: row; gap: 24px;">
+        <div style="flex: 1.1; display: flex; flex-direction: column; gap: 14px;">
+            <div class="photo" style="flex: 1;">
+                <img src="img/foto_inicial.webp" alt="Fachada da Pousada Barão">
+                <div class="caption"><i class="fa-solid fa-camera"></i> Fotografia real do estabelecimento</div>
+            </div>
+            <div class="photo" style="flex: 1;">
+                <img src="img/quintal.png" alt="Quintal arborizado">
+                <div class="caption"><i class="fa-solid fa-leaf"></i> Quintal arborizado com pé de jabuticaba</div>
+            </div>
+        </div>
+        <div style="flex: 1.4; display: flex; flex-direction: column; gap: 14px;">
+            <div class="tag"><i class="fa-solid fa-house"></i> Perfil do estabelecimento</div>
+            <p style="font-size: 0.88rem; color: var(--muted); line-height: 1.7;">
+                Pousada <b style="color:var(--text)">familiar</b> em funcionamento há vários anos no centro histórico de Araras, a <b style="color:var(--text)">1 minuto a pé do centro</b>, com mais de <b style="color:var(--text)">5.000 hóspedes atendidos</b>. Atende viajantes a trabalho, grupos e clientes corporativos (PJ).
+            </p>
+            <table class="tbl">
+                <tr><th>Acomodação</th><th>Capacidade</th><th>Preço/noite</th><th>Destaques</th></tr>
+                <tr><td><b>Quarto Coletivo</b></td><td>6 pessoas</td><td><b>R$ 400</b></td><td>6 camas de solteiro, frigobar — ideal para grupos e equipes</td></tr>
+                <tr><td><b>Quarto Duplo</b></td><td>2 pessoas</td><td><b>R$ 150</b></td><td>2 camas de solteiro, banheiro privativo</td></tr>
+            </table>
+            <div class="four-col">
+                <div class="kpi"><div class="v"><i class="fa-solid fa-wifi"></i></div><div class="l">Wi-Fi rápido e gratuito</div></div>
+                <div class="kpi"><div class="v"><i class="fa-solid fa-shield-halved"></i></div><div class="l">Câmeras de segurança</div></div>
+                <div class="kpi"><div class="v"><i class="fa-solid fa-broom"></i></div><div class="l">Higienização diária</div></div>
+                <div class="kpi"><div class="v"><i class="fa-solid fa-briefcase"></i></div><div class="l">Atendimento PJ / Empresas</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">4 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 5 — OBJETIVOS ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">04</div>
+        <div><h2>Objetivos do Projeto</h2><p>Definidos a partir do levantamento de requisitos com a gestora</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body">
+        <div class="card" style="background: var(--green); border: none; color: #fff;">
+            <h3 style="color: var(--gold);"><i class="fa-solid fa-bullseye"></i> Objetivo Geral</h3>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Desenvolver um sistema web completo para gestão e recebimento de reservas online, proporcionando ao estabelecimento uma <b style="color:#fff">presença digital profissional</b> e um <b style="color:#fff">painel de administração funcional</b>.</p>
+        </div>
+        <div class="tag orange" style="margin-top: 4px;"><i class="fa-solid fa-list-check"></i> Objetivos Específicos</div>
+        <div class="three-col" style="flex: 1;">
+            <div class="card"><h3><i class="fa-solid fa-globe"></i> Portal público responsivo</h3><p>Apresentação das acomodações reais, infraestrutura, seção PJ e contato — funcional em desktop e mobile.</p></div>
+            <div class="card"><h3><i class="fa-solid fa-calendar-check"></i> Reserva com validação</h3><p>Formulário com verificação de disponibilidade em tempo real e bloqueio visual de datas ocupadas.</p></div>
+            <div class="card"><h3><i class="fa-solid fa-lock"></i> Painel administrativo</h3><p>Autenticação, listagem, filtros, confirmação, cancelamento e exclusão de reservas.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-database"></i> Banco portátil em JSON</h3><p>Persistência sem servidor SQL — portabilidade e implantação em qualquer hospedagem PHP.</p></div>
+            <div class="card orange"><h3><i class="fa-brands fa-whatsapp"></i> Integração WhatsApp</h3><p>Comunicação direta hóspede ↔ pousada com mensagens pré-preenchidas automaticamente.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-scale-balanced"></i> Conformidade LGPD</h3><p>Termos de Uso, Política de Privacidade e de Cancelamento publicados no portal.</p></div>
+        </div>
+    </div>
+    <div class="page-num">5 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 6 — TECNOLOGIAS ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">05</div>
+        <div><h2>Tecnologias Utilizadas</h2><p>Stack enxuta, sem frameworks — simplicidade e portabilidade</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body">
+        <table class="tbl">
+            <tr><th>Componente</th><th>Tecnologia</th><th>Papel no sistema</th></tr>
+            <tr><td><b>Back-end</b></td><td>PHP 8.x (puro)</td><td>Lógica de negócio, validações server-side, acesso a dados</td></tr>
+            <tr><td><b>Front-end</b></td><td>HTML5 + CSS3 + JavaScript ES6</td><td>Estrutura, identidade visual e interatividade — sem frameworks</td></tr>
+            <tr><td><b>Banco de dados</b></td><td>JSON flat-file</td><td>Persistência em arquivo único com versionamento automático</td></tr>
+            <tr><td><b>Calendário</b></td><td>Flatpickr (JS)</td><td>Date picker com bloqueio visual de datas já reservadas</td></tr>
+            <tr><td><b>Comunicação</b></td><td>WhatsApp deep links (wa.me)</td><td>Mensagens pré-preenchidas sem custo de API</td></tr>
+            <tr><td><b>Tipografia / Ícones</b></td><td>Google Fonts + Font Awesome 6</td><td>Playfair Display, Plus Jakarta Sans e iconografia</td></tr>
+        </table>
+        <div class="two-col" style="flex:1;">
+            <div class="card">
+                <h3><i class="fa-brands fa-php"></i> Por que PHP puro?</h3>
+                <ul class="check-list" style="margin-top: 4px;">
+                    <li>Suportado nativamente em praticamente toda hospedagem compartilhada</li>
+                    <li>Custo zero de licenciamento e documentação extensa</li>
+                    <li>Código legível e mantível por desenvolvedores de nível básico</li>
+                </ul>
+            </div>
+            <div class="card orange">
+                <h3><i class="fa-solid fa-database"></i> Por que JSON como banco?</h3>
+                <ul class="check-list" style="margin-top: 4px;">
+                    <li>Banco inteiro em um arquivo: copiar a pasta = migrar o sistema</li>
+                    <li>Zero configuração — nenhum servidor MySQL para instalar</li>
+                    <li>Volume da pousada (dezenas de reservas/mês) é plenamente atendido</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">6 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 7 — ARQUITETURA ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">06</div>
+        <div><h2>Arquitetura do Sistema</h2><p>Três camadas lógicas em arquitetura monolítica simples</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body" style="flex-direction: row; gap: 26px;">
+        <div style="flex: 1.1; display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+            <div class="card" style="border-left-width: 6px; text-align: center;">
+                <h3 style="justify-content: center;"><i class="fa-solid fa-display"></i> CAMADA DE APRESENTAÇÃO</h3>
+                <p>HTML5 + CSS3 + JavaScript<br><b>index.php · quartos.php · quarto-detalhe.php · reserva.php · admin.php · contato.php</b></p>
+            </div>
+            <div style="text-align: center; color: var(--orange); font-size: 1.1rem;"><i class="fa-solid fa-arrow-down"></i> <span style="font-size:0.72rem; font-weight:700;">require_once</span></div>
+            <div class="card orange" style="border-left-width: 6px; text-align: center;">
+                <h3 style="justify-content: center;"><i class="fa-solid fa-gears"></i> CAMADA DE NEGÓCIO</h3>
+                <p><b>db.php</b> — funções PHP<br>getQuartos() · addReserva() · checkDisponibilidade() · updateStatusReserva()</p>
+            </div>
+            <div style="text-align: center; color: var(--orange); font-size: 1.1rem;"><i class="fa-solid fa-arrow-down"></i> <span style="font-size:0.72rem; font-weight:700;">read / write</span></div>
+            <div class="card" style="border-left-width: 6px; text-align: center; background: var(--green); border-color: var(--green-dark);">
+                <h3 style="justify-content: center; color: var(--gold);"><i class="fa-solid fa-database"></i> CAMADA DE DADOS</h3>
+                <p style="color: rgba(255,255,255,0.85);"><b style="color:#fff">database.json</b><br>{ quartos: [...], reservas: [...], _version: 4 }</p>
+            </div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 14px; justify-content: center;">
+            <div class="tag"><i class="fa-solid fa-code"></i> Núcleo: verificação de disponibilidade</div>
+            <pre class="code">function <span class="k">checkDisponibilidade</span>($quarto_id, $entrada, $saida) {
+    $db = lerBanco();
+    foreach ($db[<span class="s">'reservas'</span>] as $r) {
+        if ($r[<span class="s">'quarto_id'</span>] != $quarto_id) continue;
+        if ($r[<span class="s">'status'</span>] === <span class="s">'cancelada'</span>) continue;
+
+        <span style="color:#7a9a8e;">// sobreposição de períodos</span>
+        if ($entrada < $r[<span class="s">'data_saida'</span>] &&
+            $saida   > $r[<span class="s">'data_entrada'</span>])
+            return true;  <span style="color:#7a9a8e;">// CONFLITO</span>
+    }
+    return false;  <span style="color:#7a9a8e;">// disponível</span>
+}</pre>
+            <div class="card">
+                <h3><i class="fa-solid fa-arrows-rotate"></i> Versionamento do banco</h3>
+                <p>O campo <b>_version</b> permite evoluir a estrutura dos quartos automaticamente <b>preservando todas as reservas existentes</b> — sem migração manual.</p>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">7 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 8 — REQUISITOS ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">07</div>
+        <div><h2>Levantamento de Requisitos</h2><p>18 requisitos funcionais e 8 não funcionais mapeados</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body" style="flex-direction: row; gap: 24px;">
+        <div style="flex: 1.3;">
+            <div class="tag" style="margin-bottom: 10px;"><i class="fa-solid fa-list-check"></i> Requisitos Funcionais — destaques</div>
+            <table class="tbl">
+                <tr><th>Cód.</th><th>Descrição</th><th>Prioridade</th></tr>
+                <tr><td><b>RF-04</b></td><td>Formulário de solicitação de reserva</td><td>Alta</td></tr>
+                <tr><td><b>RF-05</b></td><td>Validação de datas de entrada e saída</td><td>Alta</td></tr>
+                <tr><td><b>RF-06</b></td><td>Verificação de disponibilidade do quarto no período</td><td>Alta</td></tr>
+                <tr><td><b>RF-09</b></td><td>Painel administrativo com autenticação</td><td>Alta</td></tr>
+                <tr><td><b>RF-12/13</b></td><td>Confirmar e cancelar reservas pelo painel</td><td>Alta</td></tr>
+                <tr><td><b>RF-15</b></td><td>Exibição de total de noites e valor estimado</td><td>Média</td></tr>
+                <tr><td><b>RF-17</b></td><td>Integração de contato via WhatsApp</td><td>Média</td></tr>
+            </table>
+        </div>
+        <div style="flex: 1;">
+            <div class="tag orange" style="margin-bottom: 10px;"><i class="fa-solid fa-shield"></i> Requisitos Não Funcionais</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="card orange"><h3><i class="fa-solid fa-mobile-screen"></i> Usabilidade</h3><p>Responsivo e funcional em dispositivos móveis (RNF-01)</p></div>
+                <div class="card orange"><h3><i class="fa-solid fa-lock"></i> Segurança</h3><p>Sanitização de entradas com htmlspecialchars() e painel restrito por sessão (RNF-05/06)</p></div>
+                <div class="card orange"><h3><i class="fa-solid fa-box"></i> Portabilidade</h3><p>Funciona em qualquer servidor PHP 7.4+, banco sem dependência externa (RNF-04/07)</p></div>
+                <div class="card orange"><h3><i class="fa-solid fa-gauge-high"></i> Desempenho</h3><p>Carregamento abaixo de 3 segundos em conexões 4G (RNF-02)</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">8 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 9 — PORTAL PÚBLICO ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">08</div>
+        <div><h2>O Portal Público</h2><p>Vitrine digital com fotografias reais do estabelecimento</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body" style="flex-direction: row; gap: 20px;">
+        <div style="flex: 1.2; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px;">
+            <div class="photo"><img src="img/quartocom6.webp" alt="Quarto Coletivo"><div class="caption">Quarto Coletivo — 6 camas</div></div>
+            <div class="photo"><img src="img/quartocom2.webp" alt="Quarto Duplo"><div class="caption">Quarto Duplo — 2 camas</div></div>
+            <div class="photo" style="grid-column: span 2;"><img src="img/infraestruturaesegurança.webp" alt="Infraestrutura"><div class="caption">Infraestrutura e segurança</div></div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 11px; justify-content: center;">
+            <div class="card"><h3><i class="fa-solid fa-house"></i> Página inicial</h3><p>Hero com busca rápida de datas, indicadores de credibilidade, seção de infraestrutura, quartos, avaliações e FAQ.</p></div>
+            <div class="card"><h3><i class="fa-solid fa-bed"></i> Acomodações dinâmicas</h3><p>Cards carregados do banco via getQuartos(), com página de detalhe individual, galeria e widget de reserva com cálculo automático.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-briefcase"></i> Seção PJ / Empresas</h3><p>Área dedicada a clientes corporativos — parcela importante do público da pousada — com benefícios e CTA via WhatsApp.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-scale-balanced"></i> Páginas legais (LGPD)</h3><p>Termos de Uso, Política de Privacidade (Lei 13.709/2018) e Política de Cancelamento com regras claras de check-in/out.</p></div>
+        </div>
+    </div>
+    <div class="page-num">9 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 10 — RESERVA + CALENDÁRIO ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">09</div>
+        <div><h2>Sistema de Reservas com Calendário Inteligente</h2><p>O hóspede não consegue nem selecionar uma data ocupada</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body">
+        <div class="flow">
+            <div class="flow-step"><i class="fa-solid fa-bed"></i> Hóspede escolhe o quarto</div>
+            <div class="flow-sep"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><i class="fa-solid fa-plug"></i> Site consulta api_disponibilidade.php via AJAX</div>
+            <div class="flow-sep"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><i class="fa-solid fa-calendar-xmark"></i> Flatpickr pinta de vermelho as datas ocupadas</div>
+            <div class="flow-sep"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><i class="fa-solid fa-file-pen"></i> Hóspede só seleciona períodos livres</div>
+            <div class="flow-sep"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step" style="background: var(--orange-pale); color: var(--orange);"><i class="fa-solid fa-circle-check"></i> Reserva criada como "pendente"</div>
+        </div>
+        <div class="two-col" style="flex: 1;">
+            <div class="card">
+                <h3><i class="fa-solid fa-server"></i> Validação em duas camadas</h3>
+                <ul class="check-list" style="margin-top: 4px;">
+                    <li><b>Cliente (JS):</b> bloqueio visual de datas, checkout limitado pela próxima reserva (maxDate), resumo noites × preço em tempo real</li>
+                    <li><b>Servidor (PHP):</b> campos obrigatórios, data no passado, checkout > checkin, capacidade máxima e re-checagem de disponibilidade</li>
+                    <li>Mesmo que o JavaScript seja burlado, o servidor <b>nunca aceita</b> uma reserva conflitante</li>
+                </ul>
+            </div>
+            <div class="card orange">
+                <h3><i class="fa-solid fa-calendar-days"></i> O desafio técnico do calendário</h3>
+                <p><b style="color:var(--orange)">Problema:</b> o <code style="font-size:0.74rem">&lt;input type="date"&gt;</code> nativo do HTML não permite desabilitar datas individuais.</p>
+                <p style="margin-top: 8px;"><b style="color:var(--green)">Solução:</b> biblioteca Flatpickr recebe os períodos ocupados da API e os desabilita como intervalos <code style="font-size:0.74rem">{from, to}</code> — riscados em vermelho no calendário. Ao escolher o check-in, o sistema ainda calcula o limite máximo do check-out para não atropelar a próxima reserva.</p>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">10 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 11 — PAINEL ADMIN ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">10</div>
+        <div><h2>Painel Administrativo</h2><p>A gestão inteira da pousada em uma única tela</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body">
+        <div class="four-col">
+            <div class="kpi"><div class="v"><i class="fa-solid fa-key"></i></div><div class="l">Login com senha e sessão PHP</div></div>
+            <div class="kpi"><div class="v"><i class="fa-solid fa-chart-simple"></i></div><div class="l">Dashboard: total, pendentes, check-ins futuros, hóspedes esperados</div></div>
+            <div class="kpi"><div class="v"><i class="fa-solid fa-filter"></i></div><div class="l">Filtros por data de check-in e por status</div></div>
+            <div class="kpi orange"><div class="v"><i class="fa-solid fa-bell"></i></div><div class="l">Alerta visual quando há reservas pendentes</div></div>
+        </div>
+        <div class="two-col" style="flex: 1;">
+            <div class="card">
+                <h3><i class="fa-solid fa-list-check"></i> Ciclo de vida da reserva</h3>
+                <table class="tbl" style="margin-top: 6px;">
+                    <tr><th>Status</th><th>Significado</th><th>Ações</th></tr>
+                    <tr><td><b style="color:#b45309">Pendente</b></td><td>Aguardando análise</td><td>Confirmar · Cancelar · Excluir</td></tr>
+                    <tr><td><b style="color:#15803d">Confirmada</b></td><td>Aceita pela pousada</td><td>Cancelar · Excluir</td></tr>
+                    <tr><td><b style="color:#b91c1c">Cancelada</b></td><td>Período liberado</td><td>Excluir</td></tr>
+                </table>
+            </div>
+            <div class="card" style="border-left-color: #25D366;">
+                <h3 style="color: #128C5E;"><i class="fa-brands fa-whatsapp"></i> Confirmação com um clique</h3>
+                <p>Ao confirmar uma reserva, o sistema gera um botão WhatsApp com <b>mensagem pronta</b> contendo todos os dados:</p>
+                <p style="margin-top: 10px; background: #e7f8ef; border-radius: 10px; padding: 12px 14px; font-style: italic; color: var(--text); font-size: 0.78rem; line-height: 1.6;">
+                    "Olá, Maria! 🎉 Sua reserva na <b>Pousada Barão</b> foi <b>confirmada</b>!<br>
+                    🏠 Quarto: Coletivo &nbsp;📅 Check-in: 10/07 &nbsp;📅 Check-out: 13/07 &nbsp;👥 4 hóspedes<br>
+                    Aguardamos você!"
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="page-num">11 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 12 — TESTES ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">11</div>
+        <div><h2>Testes Realizados</h2><p>14 cenários manuais cobrindo o fluxo completo — todos aprovados</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body" style="flex-direction: row; gap: 22px;">
+        <div style="flex: 1;">
+            <table class="tbl">
+                <tr><th>Cenário de teste</th><th style="width:80px;">Resultado</th></tr>
+                <tr><td>Acessar o site sem database.json existente</td><td>✅ Banco criado</td></tr>
+                <tr><td>Banco em versão antiga é aberto</td><td>✅ Migrado, reservas preservadas</td></tr>
+                <tr><td>Formulário enviado completo</td><td>✅ Reserva criada</td></tr>
+                <tr><td>Campos em branco</td><td>✅ Erro por campo</td></tr>
+                <tr><td>Data de entrada no passado</td><td>✅ Bloqueada</td></tr>
+                <tr><td>Check-out anterior ao check-in</td><td>✅ Bloqueado</td></tr>
+                <tr><td>Reservar quarto já ocupado no período</td><td>✅ Indisponível</td></tr>
+            </table>
+        </div>
+        <div style="flex: 1;">
+            <table class="tbl">
+                <tr><th>Cenário de teste</th><th style="width:80px;">Resultado</th></tr>
+                <tr><td>Cancelar reserva e tentar o mesmo período</td><td>✅ Liberado</td></tr>
+                <tr><td>Acessar admin sem login</td><td>✅ Redirecionado</td></tr>
+                <tr><td>Confirmar reserva no painel</td><td>✅ Status + badge</td></tr>
+                <tr><td>Excluir reserva</td><td>✅ Removida</td></tr>
+                <tr><td>Filtrar por data no admin</td><td>✅ Filtro correto</td></tr>
+                <tr><td>quarto-detalhe.php?id=99 (inválido)</td><td>✅ Redirecionado</td></tr>
+                <tr><td>Acesso mobile (768px)</td><td>✅ Menu hambúrguer ok</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="page-num">12 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 13 — LIMITAÇÕES E FUTURO ════════════════ -->
+<div class="slide">
+    <div class="slide-header">
+        <div class="num">12</div>
+        <div><h2>Limitações Reconhecidas e Trabalhos Futuros</h2><p>Transparência técnica e caminho de evolução</p></div>
+        <div class="mini-logo">Pousada Barão</div>
+    </div>
+    <div class="slide-body" style="flex-direction: row; gap: 24px;">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 11px;">
+            <div class="tag orange"><i class="fa-solid fa-triangle-exclamation"></i> Limitações atuais</div>
+            <div class="card orange"><h3><i class="fa-solid fa-key"></i> Senha hardcoded</h3><p>Senha do admin definida no código-fonte — deve migrar para variável de ambiente com password_hash().</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-file-lines"></i> Concorrência no JSON</h3><p>Sem file locking: escritas simultâneas podem corromper dados. Risco negligenciável na escala atual.</p></div>
+            <div class="card orange"><h3><i class="fa-solid fa-envelope"></i> Sem notificação automática</h3><p>O admin não recebe e-mail/SMS ao chegar nova reserva — o envio do WhatsApp é manual.</p></div>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 11px;">
+            <div class="tag"><i class="fa-solid fa-rocket"></i> Próximos passos</div>
+            <div class="card"><h3><i class="fa-solid fa-database"></i> Migração para MySQL</h3><p>A camada db.php isola o acesso a dados — trocar JSON por PDO/MySQL não altera nenhuma página do site.</p></div>
+            <div class="card"><h3><i class="fa-brands fa-pix"></i> Pagamento online</h3><p>Integração com Pix / Mercado Pago para cobrança no ato da solicitação.</p></div>
+            <div class="card"><h3><i class="fa-solid fa-calendar-days"></i> Gestão visual</h3><p>Calendário de ocupação, gestão de quartos pelo painel e relatórios mensais de receita em PDF.</p></div>
+        </div>
+    </div>
+    <div class="page-num">13 / 14</div>
+</div>
+
+<!-- ════════════════ SLIDE 14 — CONCLUSÃO ════════════════ -->
+<div class="slide slide-final">
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <img src="img/logo fundo removido.png" alt="Logo Pousada Barão" style="height: 80px; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));">
+        <h2>De um caderno de anotações<br>a um sistema completo</h2>
+        <p>O projeto demonstrou que é possível entregar uma solução digital <b style="color:#fff">funcional, de baixo custo e fácil manutenção</b> para microempresas de hospedagem — com tecnologias acessíveis e sem custos de licenciamento.</p>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 90%; margin-top: 8px;">
+            <div style="background: rgba(255,255,255,0.12); border-radius: 14px; padding: 16px 12px;">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">🌐</div>
+                <div style="font-weight: 800; font-size: 0.82rem;">Portal responsivo</div>
+                <div style="font-size: 0.72rem; opacity: 0.7; margin-top: 4px;">Com fotos e dados reais</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.12); border-radius: 14px; padding: 16px 12px;">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">📅</div>
+                <div style="font-weight: 800; font-size: 0.82rem;">Zero overbooking</div>
+                <div style="font-size: 0.72rem; opacity: 0.7; margin-top: 4px;">Calendário com bloqueio de datas</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.12); border-radius: 14px; padding: 16px 12px;">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">🔐</div>
+                <div style="font-weight: 800; font-size: 0.82rem;">Gestão centralizada</div>
+                <div style="font-size: 0.72rem; opacity: 0.7; margin-top: 4px;">Painel admin completo</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.12); border-radius: 14px; padding: 16px 12px;">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">⚖️</div>
+                <div style="font-weight: 800; font-size: 0.82rem;">Conformidade LGPD</div>
+                <div style="font-size: 0.72rem; opacity: 0.7; margin-top: 4px;">Políticas publicadas</div>
+            </div>
+        </div>
+        <p style="margin-top: 18px; font-size: 0.85rem; opacity: 0.7;">
+            <b>Esdras de Souza</b> · Tecnologia em Análise e Desenvolvimento de Sistemas · Araras, SP — 2026<br>
+            <span style="font-size: 0.75rem;">Obrigado! Perguntas?</span>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

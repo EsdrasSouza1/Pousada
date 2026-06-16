@@ -14,7 +14,7 @@ O projeto adota uma arquitetura clássica e leve, sem a dependência de pesados 
 
 - **Front-end:** HTML5, CSS3 (Vanilla com uso intensivo de variáveis CSS/Custom Properties para tematização) e JavaScript básico para interatividade no menu móvel.
 - **Back-end:** PHP moderno, atuando no roteamento, processamento de formulários, validação e lógica de negócios.
-- **Banco de Dados (Flat-file):** Sistema de persistência baseado em arquivo JSON genérico (`database.json`). Todo o motor do banco está encapsulado no arquivo `db.php`, não necessitando configurar bancos SQL externos (MySQL, PostgreSQL), garantindo portabilidade extrema.
+- **Banco de Dados (SQL):** MySQL relacional acessado via PDO. O `db.php` centraliza todo o acesso a dados e cria automaticamente as tabelas (`quartos`, `reservas`, `reservas_log`), a chave estrangeira e os **triggers** de auditoria na primeira execução. O esquema completo também está documentado em `schema.sql`. A conexão é configurada por variáveis de ambiente (`MYSQLHOST`, `MYSQLUSER`, etc.).
 - **Ícones e Tipografia:** FontAwesome para a iconografia e Google Fonts (Plus Jakarta Sans para clareza e Playfair Display para elegância).
 
 ## Estrutura de Páginas e Navegação
@@ -38,19 +38,21 @@ O site possui 5 páginas navegáveis principais para os usuários (cumprindo req
 Por ser baseado em arquivos e não necessitar de um SGBD externo complexo, rodar o projeto é extremamente simples, ideal para bancas de avaliação.
 
 ### Requisitos:
-- PHP 7.4 ou superior instalado na máquina (XAMPP, WAMP, Laragon, ou PHP nativo).
-- Servidor Web (Apache, Nginx ou o próprio built-in server do PHP).
+- PHP 7.4 ou superior com a extensão `pdo_mysql` (XAMPP, WAMP, Laragon, ou PHP nativo).
+- Um servidor MySQL (local ou na nuvem).
 
 ### Passos Rápidos:
 1. Clone ou extraia a pasta do projeto para o seu computador.
-2. Abra o terminal e navegue até a pasta raiz do projeto.
-3. Inicie o servidor embutido do PHP com o comando:
+2. Crie um banco MySQL vazio (ex.: `pousada`).
+3. Defina as variáveis de conexão e inicie o servidor embutido do PHP:
    ```bash
+   export MYSQLHOST=127.0.0.1 MYSQLPORT=3306 MYSQLUSER=root MYSQLPASSWORD= MYSQLDATABASE=pousada
    php -S localhost:8000
    ```
+   (No PowerShell use `$env:MYSQLHOST="127.0.0.1"`, etc.)
 4. Acesse `http://localhost:8000` no seu navegador.
 
-*Nota Técnica: O banco de dados (`database.json`) é gerado automaticamente pelo arquivo `db.php` na primeira vez que a aplicação for executada ou tentar ler os quartos, dispensando scripts de migração (`.sql`).*
+*Nota Técnica: as tabelas, os triggers e os quartos iniciais são criados automaticamente pelo `db.php` na primeira execução. Para deploy gratuito na nuvem (Railway + MySQL), veja `DEPLOY.md`.*
 
 ## Design e UI/UX
 O design e a interface foram construídos para transmitir uma sensação "Premium Boutique" aliada a segurança e paz. As diretrizes visuais são:
